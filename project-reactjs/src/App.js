@@ -5,30 +5,29 @@ import Home from './pages/home';
 import CharacterList from './pages/characterList';
 import CharacterByLocation from './pages/characterByLocation';
 import DetailCharacter from './pages/detailCharacter';
-import NotFound from './pages/notFound';
 import ResponsiveAppBar from './components/appBar'
 
-import { useQuery, gql } from '@apollo/client';
+// import { useQuery, gql } from '@apollo/client';
 
-const GET_DATA = gql`
-  {
-    characters {
-      results {
-        id,
-        name,
-        status,
-        gender,
-        species
-      }
-    }
-  }`
+// const GET_DATA = gql`
+//   {
+//     characters {
+//       results {
+//         id,
+//         name,
+//         status,
+//         gender,
+//         species
+//       }
+//     }
+//   }`
 
 
 function App() {
-  const { loading, error, data } = useQuery(GET_DATA);
+  // const { loading, error, data } = useQuery(GET_DATA);
 
-  if (loading) return "Loading...";
-  if (error) return <pre>{error.message}</pre>
+  // if (loading) return "Loading...";
+  // if (error) return <pre>{error.message}</pre>
   
   return (
     <Router>

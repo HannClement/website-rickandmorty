@@ -14,11 +14,11 @@ function CharacterListCard() {
         {
             characters {
             results {
-                id,
-                name,
-                status,
-                gender,
-                species,
+                id
+                name
+                status
+                gender
+                species
                 image
             }
             }
@@ -36,7 +36,10 @@ function CharacterListCard() {
 
     return (
         <Container maxWidth='xl'>
-            <Grid container spacing={3} sx={{mt: 1, mb: 1}}>
+            <Typography variant="h4" sx={{mt: 2, mb: 2}}>
+                List of Character
+            </Typography>
+            <Grid container spacing={3}>
             {data && (
                 <>
                 {data.characters.results.map((character) => (

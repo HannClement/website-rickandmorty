@@ -1,8 +1,8 @@
+import React from 'react';
+import CardListLocation from '../components/cardListLocation';
+
 function CharacterByLocation () {
-    return (
-        <h4>CharacterByLocation</h4>
-    );
-    
+    return <CardListLocation />
 }
 
 export default CharacterByLocation

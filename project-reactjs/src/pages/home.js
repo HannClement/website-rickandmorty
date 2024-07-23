@@ -1,8 +1,8 @@
+import React from 'react';
+import DesainHome from '../components/desainHome';
+
 function Home () {
-    return (
-        <h4>HOMEPAGE</h4>
-    );
-    
+    return <DesainHome />;  
 }
 
 export default Home
