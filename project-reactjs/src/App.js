@@ -1,26 +1,57 @@
 import logo from './logo.svg';
 import './App.css';
-import ResponsiveAppBar from './components/appBar';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/home';
+import CharacterList from './pages/characterList';
+import CharacterByLocation from './pages/characterByLocation';
+import DetailCharacter from './pages/detailCharacter';
+import NotFound from './pages/notFound';
+import ResponsiveAppBar from './components/appBar'
+
+import { useQuery, gql } from '@apollo/client';
+import { useEffect } from 'react';
+
+const GET_DATA = gql`
+  {
+    characters {
+      results {
+        id,
+        name,
+        status,
+        gender,
+        species
+      }
+    }
+  }`
+
 
 function App() {
+  const { loading, error, data } = useQuery(GET_DATA);
+
+  if (loading) return "Loading...";
+  if (error) return <pre>{error.message}</pre>
+  
   return (
-    <div className="App">
-      {/* <header className="App-header"> */}
-        {/* <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a> */}
-      {/* </header> */}
+    <Router>
       <ResponsiveAppBar />
-    </div>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/characterlist" element={<CharacterList />} />
+          <Route path="/characterbylocation" element={<CharacterByLocation />} />
+          <Route path="/detailcharacter" element={<DetailCharacter />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+
+        {/* {data && (
+          <>
+            {data.characters.results.map((character) => (
+              <p key={character.id}>{character.name}</p>
+            ))}
+          </>
+        )} */}
+      </div>
+    </Router>
   );
 }
 

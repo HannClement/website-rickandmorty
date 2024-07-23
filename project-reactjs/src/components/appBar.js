@@ -10,11 +10,13 @@ import Tooltip from '@mui/material/Tooltip';
 import ConnectedTvIcon from '@mui/icons-material/ConnectedTv';
 import Stack from '@mui/material/Stack';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function ResponsiveAppBar() {
 
     const [showMore, setShowMore] = useState(false);
     const [status, setStatus] = useState(false);
+    const navigate = useNavigate()
 
     function handleClick() {
         setShowMore(!showMore);
@@ -25,9 +27,10 @@ function ResponsiveAppBar() {
     }
 
     return (
-        <AppBar position='sticky'>
+        <AppBar position='static'>
             <Toolbar>
-                <Box sx={{display: { xs: 'none', md: 'flex' }, flexGrow: 1, alignItems: 'center'}}>
+                <Box sx={{display: { xs: 'none', md: 'flex' }, flexGrow: 1, alignItems: 'center'}}
+                    onClick={() => navigate('/')}>
                     <ConnectedTvIcon sx={{mr: 2}} />
                     <Typography variant='h6' sx={{fontWeight: 700}}>
                         Rick and Morty
@@ -35,8 +38,8 @@ function ResponsiveAppBar() {
                 </Box>
 
                 <Stack direction="row" spacing={2} sx={{display: { xs: 'none', md: 'flex' }, alignItems: 'center'}}>
-                    <Button variant="text" sx={{color: 'white'}}>Character List</Button>
-                    <Button variant="text" sx={{color: 'white'}}>Character By Location</Button>
+                    <Button variant="text" sx={{color: 'white'}} onClick={() => navigate('/characterlist')}>Character List</Button>
+                    <Button variant="text" sx={{color: 'white'}} onClick={() => navigate('/characterbylocation')}>Character By Location</Button>
                     <Tooltip title={status ? 'You Wanna Sign Out ?' : 'You Wanna Sign In ?'}>
                         <Button variant="outlined" sx={{borderColor: 'white', 
                             color: 'white', 
@@ -56,7 +59,8 @@ function ResponsiveAppBar() {
                     <MenuIcon />
                     </IconButton>
                 </Box>
-                <Box sx={{display: { xs: 'flex', md: 'none' }, justifyContent: 'center', flexGrow: 1, alignItems: 'center'}}>
+                <Box sx={{display: { xs: 'flex', md: 'none' }, justifyContent: 'center', flexGrow: 1, alignItems: 'center'}}
+                    onClick={() => navigate('/')}>
                     <ConnectedTvIcon sx={{mr: 2}} />
                     <Typography variant='h6' sx={{fontWeight: 700}}>
                         Rick and Morty
@@ -66,10 +70,10 @@ function ResponsiveAppBar() {
             
             {showMore && 
                 <Stack direction='column' spacing={2} sx={{display: { xs: 'flex', md: 'none'}}}>
-                    <Button variant="outlined" sx={{color: 'white'}}>
+                    <Button variant="outlined" sx={{color: 'white'}} onClick={() => navigate('/characterList')}>
                         Character List
                     </Button>
-                    <Button variant="text" sx={{color: 'white'}} >
+                    <Button variant="text" sx={{color: 'white'}} onClick={() => navigate('/characterbylocation')}>
                         Character By Location
                     </Button>
                     <Button variant="text" sx={{color: 'white', backgroundColor: status ? 'green' : 'red'}} onClick={handleStatus}>
