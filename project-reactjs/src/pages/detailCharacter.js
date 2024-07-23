@@ -1,8 +1,8 @@
+import React from 'react';
+import LayoutDetail from '../components/layoutDetail';
+
 function DetailCharacter () {
-    return (
-        <h4>DetailCharacter</h4>
-    );
-    
+    return <LayoutDetail />;    
 }
 
 export default DetailCharacter

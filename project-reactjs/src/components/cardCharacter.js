@@ -2,10 +2,8 @@ import * as React from 'react';
 import { useQuery, gql } from '@apollo/client';
 import { Container, Grid } from '@mui/material';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { useNavigate } from 'react-router-dom';
@@ -33,7 +31,7 @@ function CharacterListCard() {
     if (error) return <pre>{error.message}</pre>
 
     function getID(id) {
-        navigate('/detailCharacter/${id}')
+        navigate(`/detailcharacter/${id}`);
     }
 
     return (

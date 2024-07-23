@@ -9,7 +9,6 @@ import NotFound from './pages/notFound';
 import ResponsiveAppBar from './components/appBar'
 
 import { useQuery, gql } from '@apollo/client';
-import { useEffect } from 'react';
 
 const GET_DATA = gql`
   {
@@ -39,8 +38,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/characterlist" element={<CharacterList />} />
           <Route path="/characterbylocation" element={<CharacterByLocation />} />
-          <Route path="/detailcharacter" element={<DetailCharacter />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/detailcharacter/:id" element={<DetailCharacter />} />
+
         </Routes>
 
         {/* {data && (
